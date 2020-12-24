@@ -126,7 +126,7 @@ namespace Программа_курса_денег
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(680, 114);
+            this.label4.Location = new System.Drawing.Point(634, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 20);
             this.label4.TabIndex = 9;
@@ -175,8 +175,8 @@ namespace Программа_курса_денег
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_clear;
+        protected System.Windows.Forms.Label label4;
     }
 }
 

@@ -21,16 +21,11 @@ namespace Программа_курса_денег
            InitializeComponent();
            Parse();
             ParseOLD();
-            Colors();
-           
+            label4.Visible = false;
 
         }
         
-        public void Colors()
-        { 
-        
-        
-        }
+
 
         public void Parse() // загрузка данных из ЦБ на сегоднящний день
         {
@@ -59,8 +54,8 @@ namespace Программа_курса_денег
 
                 Currencies.Add(currency);
             }
-      
-        }
+
+           }
 
         public void ParseOLD() // загрузка данных из ЦБ на вчерашний день
         {
@@ -92,8 +87,11 @@ namespace Программа_курса_денег
 
         }
 
+   
+
         private void btn_search_Click(object sender, EventArgs e) //кнопка поиска
         {
+            
             string sName = comboBox1.Text;
 
             var CharCodePrice = Currencies.Where(x => x.CharCode == sName).FirstOrDefault();
@@ -111,7 +109,26 @@ namespace Программа_курса_денег
                 textBox1.Text = CharCodePrice.Price.ToString("G");
 
                 textBox2.Text = OldCharCodePrice.Price.ToString("G");
+
+                label4.Visible = true;
+
+                decimal a = CharCodePrice.Price - OldCharCodePrice.Price;
+
+                decimal b = ((CharCodePrice.Price - OldCharCodePrice.Price) / OldCharCodePrice.Price) * 100;
+
+                if (CharCodePrice.Price > OldCharCodePrice.Price)
+                {
+                    label4.ForeColor = Color.Green;
+                    label4.Text = "+ " + a.ToString("G") + "+ " + b.ToString("P");
+                }
+                else
+                {
+                    label4.ForeColor = Color.Red;
+                    label4.Text = " " + a.ToString("G") + " " + b.ToString("P");
+                }
             }
+            
+            
 
         }
 
@@ -119,6 +136,7 @@ namespace Программа_курса_денег
         {
             textBox1.Clear();
             textBox2.Clear();
+            label4.Text = null;
             comboBox1.SelectedIndex = -1;
         }
 
